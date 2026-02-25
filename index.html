@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>日本旅遊優惠券助手</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 點擊回饋效果 */
+        .active-scale:active { transform: scale(0.98); transition: 0.1s; }
+        /* 避免長按圖片彈出菜單（防止使用者不小心存圖而非掃碼） */
+        img { -webkit-touch-callout: none; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans">
+
+    <nav class="bg-white border-b p-4 sticky top-0 z-40">
+        <h1 class="text-xl font-bold text-center text-red-600">🇯🇵 日本購物優惠券</h1>
+    </nav>
+
+    <div class="max-w-md mx-auto p-4">
+        <div onclick="openModal()" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">最常用</span>
+                    <span class="text-gray-400 text-xs">有效期限：2026/12/31</span>
+                </div>
+                <h2 class="text-xl font-bold text-gray-800">Bic Camera 電器城</h2>
+                <p class="text-blue-600 font-semibold mt-1">10% 免稅 + 7% 額外折扣</p>
+                
+                <div class="mt-4 relative group">
+                    <img src="BIC.jpg" alt="Bic Camera Coupon" class="w-full h-48 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center rounded-lg">
+                        <span class="bg-black bg-opacity-60 text-white px-4 py-2 rounded-full text-sm">點擊放大掃碼</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-3 text-center text-xs text-gray-500">
+                適用於電器、手錶、玩具等
+            </div>
+        </div>
+    </div>
+
+    <div id="couponModal" class="fixed inset-0 bg-black z-50 hidden flex flex-col justify-center items-center">
+        <button onclick="closeModal()" class="absolute top-10 right-6 text-white text-4xl">&times;</button>
+        
+        <div class="bg-white px-4 py-2 rounded-full mb-6 animate-pulse">
+            <p class="text-black text-sm font-bold">店員様：このバーコードをスキャンしてください</p>
+        </div>
+
+        <img id="fullImg" src="BIC.jpg" class="max-w-[95%] max-h-[70vh] object-contain shadow-2xl">
+
+        <div class="mt-10 text-center">
+            <p class="text-yellow-400 font-bold mb-2 text-lg">💡 請將螢幕亮度調至最高</p>
+            <p class="text-gray-400 text-sm">請確保條碼完整顯示在畫面中</p>
+        </div>
+        
+        <button onclick="closeModal()" class="mt-10 bg-white text-black px-10 py-3 rounded-full font-bold">返回列表</button>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById('couponModal').classList.remove('hidden');
+            // 2026 模擬自動調亮提醒 (部分瀏覽器支援)
+            if (window.confirm("為了確保掃碼成功，建議手動將螢幕亮度調至最高唷！")) {
+                console.log("User confirmed brightness.");
+            }
+        }
+        function closeModal() {
+            document.getElementById('couponModal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
