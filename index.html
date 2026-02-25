@@ -6,68 +6,89 @@
     <title>日本旅遊優惠券助手</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* 點擊回饋效果 */
         .active-scale:active { transform: scale(0.98); transition: 0.1s; }
-        /* 避免長按圖片彈出菜單（防止使用者不小心存圖而非掃碼） */
-        img { -webkit-touch-callout: none; }
+        img { -webkit-touch-callout: none; -webkit-user-select: none; }
+        /* 讓圖片在彈出視窗中完整顯示 */
+        #fullImg { max-width: 95%; max-height: 75vh; object-fit: contain; }
     </style>
 </head>
-<body class="bg-slate-50 font-sans">
+<body class="bg-slate-50 font-sans text-gray-900">
 
-    <nav class="bg-white border-b p-4 sticky top-0 z-40">
-        <h1 class="text-xl font-bold text-center text-red-600">🇯🇵 日本購物優惠券</h1>
+    <nav class="bg-white border-b p-4 sticky top-0 z-40 shadow-sm">
+        <h1 class="text-xl font-bold text-center text-red-600">🇯🇵 2026 日本購物優惠券</h1>
     </nav>
 
-    <div class="max-w-md mx-auto p-4">
-        <div onclick="openModal()" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+    <div class="max-w-md mx-auto p-4 space-y-6">
+        
+        <div onclick="openModal('BIC.jpg', 'Bic Camera 電器城')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-3">
-                    <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">最常用</span>
-                    <span class="text-gray-400 text-xs">有效期限：2026/12/31</span>
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">電器/手錶/藥妝</span>
+                    <span class="text-gray-400 text-xs">2026/12/31</span>
                 </div>
-                <h2 class="text-xl font-bold text-gray-800">Bic Camera 電器城</h2>
-                <p class="text-blue-600 font-semibold mt-1">10% 免稅 + 7% 額外折扣</p>
-                
-                <div class="mt-4 relative group">
-                    <img src="BIC.jpg" alt="Bic Camera Coupon" class="w-full h-48 object-cover rounded-lg border">
-                    <div class="absolute inset-0 bg-black bg-opacity-10 flex items-center justify-center rounded-lg">
-                        <span class="bg-black bg-opacity-60 text-white px-4 py-2 rounded-full text-sm">點擊放大掃碼</span>
+                <h2 class="text-xl font-bold">Bic Camera</h2>
+                <p class="text-blue-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="BIC.jpg" class="w-full h-40 object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-black/20 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊掃碼</span>
                     </div>
                 </div>
             </div>
-            <div class="bg-gray-50 p-3 text-center text-xs text-gray-500">
-                適用於電器、手錶、玩具等
+        </div>
+
+        <div onclick="openModal('MATS.jpg', '松本清 藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">連鎖藥妝店</span>
+                    <span class="text-gray-400 text-xs">2026/08/31</span>
+                </div>
+                <h2 class="text-xl font-bold">松本清 (Matsumoto)</h2>
+                <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="MATS.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/20 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊掃碼</span>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <p class="text-center text-gray-400 text-xs">請確保結帳時手機網路通暢</p>
     </div>
 
-    <div id="couponModal" class="fixed inset-0 bg-black z-50 hidden flex flex-col justify-center items-center">
-        <button onclick="closeModal()" class="absolute top-10 right-6 text-white text-4xl">&times;</button>
+    <div id="couponModal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-center items-center p-4">
+        <button onclick="closeModal()" class="absolute top-8 right-6 text-white text-4xl p-2">&times;</button>
         
-        <div class="bg-white px-4 py-2 rounded-full mb-6 animate-pulse">
-            <p class="text-black text-sm font-bold">店員様：このバーコードをスキャンしてください</p>
+        <h3 id="modalTitle" class="text-white text-lg font-bold mb-4"></h3>
+
+        <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6 shadow-lg">
+            <p class="text-black text-sm font-extrabold text-center">店員様：スキャンをお願いします</p>
         </div>
 
-        <img id="fullImg" src="BIC.jpg" class="max-w-[95%] max-h-[70vh] object-contain shadow-2xl">
-
-        <div class="mt-10 text-center">
-            <p class="text-yellow-400 font-bold mb-2 text-lg">💡 請將螢幕亮度調至最高</p>
-            <p class="text-gray-400 text-sm">請確保條碼完整顯示在畫面中</p>
+        <div class="bg-white p-2 rounded-lg shadow-2xl flex justify-center items-center">
+            <img id="fullImg" src="" alt="Coupon Big Image">
         </div>
-        
-        <button onclick="closeModal()" class="mt-10 bg-white text-black px-10 py-3 rounded-full font-bold">返回列表</button>
+
+        <div class="mt-8 text-center text-white">
+            <p class="text-yellow-400 font-bold text-lg animate-pulse">☀️ 請將螢幕亮度調至最高</p>
+            <button onclick="closeModal()" class="mt-6 bg-white/10 border border-white/20 text-white px-10 py-3 rounded-full font-bold">返回列表</button>
+        </div>
     </div>
 
     <script>
-        function openModal() {
+        function openModal(imgSrc, title) {
+            document.getElementById('fullImg').src = imgSrc;
+            document.getElementById('modalTitle').innerText = title;
             document.getElementById('couponModal').classList.remove('hidden');
-            // 2026 模擬自動調亮提醒 (部分瀏覽器支援)
-            if (window.confirm("為了確保掃碼成功，建議手動將螢幕亮度調至最高唷！")) {
-                console.log("User confirmed brightness.");
-            }
+            // 防止捲動
+            document.body.style.overflow = 'hidden';
         }
+
         function closeModal() {
             document.getElementById('couponModal').classList.add('hidden');
+            // 恢復捲動
+            document.body.style.overflow = 'auto';
         }
     </script>
 </body>
