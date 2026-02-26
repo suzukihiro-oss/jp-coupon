@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>日本旅遊優惠券助手</title>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,14 +20,27 @@
     <style>
         .active-scale:active { transform: scale(0.98); transition: 0.1s; }
         img { -webkit-touch-callout: none; -webkit-user-select: none; }
-        /* 讓圖片在彈出視窗中完整顯示 */
-        #fullImg { max-width: 95%; max-height: 75vh; object-fit: contain; }
+        
+        /* 彈出視窗圖片設定 */
+        #fullImg { 
+            max-width: 95%; 
+            max-height: 75vh; 
+            object-fit: contain; 
+            transition: transform 0.2s ease-in-out;
+            /* 允許圖片區域進行手動縮放行為 */
+            touch-action: manipulation; 
+        }
+        
+        /* 確保背景不會干擾縮放 */
+        #couponModal {
+            overflow: auto;
+        }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-gray-900">
 
-    <nav class="bg-white border-b p-4 sticky top-0 z-40 shadow-sm">
-        <h1 class="text-xl font-bold text-center text-red-600">🇯🇵 2026 日本購物優惠券</h1>
+    <nav class="bg-white border-b p-4 sticky top-0 z-40 shadow-sm text-center">
+        <h1 class="text-xl font-bold text-red-600">🇯🇵 2026 日本購物優惠券</h1>
     </nav>
 
     <div class="max-w-md mx-auto p-4 space-y-6">
@@ -74,16 +87,12 @@
                 </div>
                 <h2 class="text-xl font-bold text-gray-800">驚安殿堂 唐吉訶德</h2>
                 <p class="text-red-600 font-bold">10% 免稅 + 最高 7% 折扣</p>
-                
                 <div class="mt-4 p-4 bg-orange-50 rounded-xl border border-orange-200 text-center">
                     <p class="text-sm text-orange-800 mb-3 font-medium">官方規定：需點擊下方連結領取方可生效</p>
-                    <button onclick="openDonki()" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition active:scale-95">
+                    <button onclick="openDonki()" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition active:scale-95">
                         🎟️ 點我領取電子折價券
                     </button>
                 </div>
-            </div>
-            <div class="bg-gray-50 p-3 text-center text-[10px] text-gray-400">
-                ※ 若條碼未出現，請點擊瀏覽器右上角選單選擇「在 Chrome/Safari 開啟」
             </div>
         </div>
 
@@ -93,8 +102,8 @@
                     <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">店數最多</span>
                     <span class="text-gray-400 text-xs">2027/12/31</span>
                 </div>
-                <h2 class="text-xl font-bold text-gray-800">鶴羽藥妝 (Tsuruha)</h2>
-                <p class="text-red-600 font-bold">10% 免稅 + 最高 7% 折扣</p>
+                <h2 class="text-xl font-bold">鶴羽藥妝 (Tsuruha)</h2>
+                <p class="text-red-600 font-bold">10% 免稅 + 7% 折扣</p>
                 <div class="mt-4 relative">
                     <img src="TSU.jpg" class="w-full h-40 object-cover rounded-lg border">
                     <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
@@ -102,19 +111,16 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-gray-50 p-3 text-center text-[10px] text-gray-500">
-                滿1萬折3% / 滿3萬折5% / 滿5萬折7%
-            </div>
         </div>
 
-        <div onclick="openModal('SUN.jpg', 'Sundrug 尚都樂客')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('SUN.jpg', 'Sundrug 藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
                     <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">知名藥妝</span>
                     <span class="text-gray-400 text-xs">長期有效</span>
                 </div>
                 <h2 class="text-xl font-bold text-gray-800">Sundrug 尚都樂客</h2>
-                <p class="text-red-600 font-bold">10% 免稅 + 最高 7% 折扣</p>
+                <p class="text-red-600 font-bold">10% 免稅 + 7% 折扣</p>
                 <div class="mt-4 relative">
                     <img src="SUN.jpg" class="w-full h-40 object-cover rounded-lg border">
                     <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
@@ -122,9 +128,21 @@
                     </div>
                 </div>
             </div>
-            <div class="bg-red-50 p-3 text-center text-[10px] text-red-700">
-                滿1萬折3% / 滿3萬折5% / 滿5萬折7%
+        </div>
+
+        <div class="mt-10 p-6 bg-white rounded-3xl border-2 border-dashed border-gray-200">
+            <h3 class="text-lg font-bold text-center mb-4">💡 如何收藏到手機桌面？</h3>
+            <div class="grid grid-cols-2 gap-4 text-sm">
+                <div class="space-y-2 border-r pr-2 text-center">
+                    <p class="font-bold text-blue-600">🍎 iPhone</p>
+                    <p class="text-gray-600">點擊下方 <span class="bg-gray-100 px-1 rounded">分享圖示</span><br>選 <span class="bg-gray-100 px-1 rounded">加入主畫面</span></p>
+                </div>
+                <div class="space-y-2 text-center">
+                    <p class="font-bold text-green-600">🤖 Android</p>
+                    <p class="text-gray-600">點擊右上 <span class="bg-gray-100 px-1 rounded">三個點</span><br>選 <span class="bg-gray-100 px-1 rounded">安裝/新增桌面</span></p>
+                </div>
             </div>
+            <p class="text-center text-[10px] text-gray-400 mt-4 font-medium italic">※ 您現在可以兩指捏合縮放圖片或點擊切換大小</p>
         </div>
 
         <p class="text-center text-gray-400 text-xs pb-10">請確保結帳時手機網路通暢</p>
@@ -132,24 +150,35 @@
 
     <div id="couponModal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-center items-center p-4">
         <button onclick="closeModal()" class="absolute top-8 right-6 text-white text-4xl p-2">&times;</button>
-        <h3 id="modalTitle" class="text-white text-lg font-bold mb-4"></h3>
-        <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6 shadow-lg">
+        <h3 id="modalTitle" class="text-white text-lg font-bold mb-4 text-center"></h3>
+        
+        <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6">
             <p class="text-black text-sm font-extrabold text-center">店員様：スキャンをお願いします</p>
         </div>
+
         <div class="bg-white p-2 rounded-lg shadow-2xl flex justify-center items-center">
-            <img id="fullImg" src="" alt="Coupon Big Image">
+            <img id="fullImg" src="" onclick="toggleZoom()" alt="優惠券條碼">
         </div>
+
         <div class="mt-8 text-center text-white">
             <p class="text-yellow-400 font-bold text-lg animate-pulse">☀️ 請將螢幕亮度調至最高</p>
+            <p class="text-gray-400 text-xs mt-2 font-medium">✨ 支援兩指縮放 或 點擊切換大小</p>
             <button onclick="closeModal()" class="mt-6 bg-white/10 border border-white/20 text-white px-10 py-3 rounded-full font-bold">返回列表</button>
         </div>
     </div>
 
     <script>
+        let isZoomed = false;
+
         function openModal(imgSrc, title) {
-            document.getElementById('fullImg').src = imgSrc;
+            const img = document.getElementById('fullImg');
+            img.src = imgSrc;
+            img.style.transform = "scale(1)"; // 重設縮放狀態
+            isZoomed = false;
+            
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('couponModal').classList.remove('hidden');
+            // 由於需要手動縮放，這裡改為不完全鎖定 body，但隱藏捲軸
             document.body.style.overflow = 'hidden';
         }
 
@@ -158,8 +187,18 @@
             document.body.style.overflow = 'auto';
         }
 
+        // 保留備用的點擊切換功能
+        function toggleZoom() {
+            const img = document.getElementById('fullImg');
+            if (isZoomed) {
+                img.style.transform = "scale(1)";
+            } else {
+                img.style.transform = "scale(1.5)";
+            }
+            isZoomed = !isZoomed;
+        }
+
         function openDonki() {
-            // 使用 window.open 跳轉唐吉訶德官方頁面
             window.open('https://japanportal.donki-global.com/coupon/cp001_zhtw.html', '_blank', 'noopener,noreferrer');
         }
     </script>
