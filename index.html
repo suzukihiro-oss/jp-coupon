@@ -27,14 +27,10 @@
             max-height: 75vh; 
             object-fit: contain; 
             transition: transform 0.2s ease-in-out;
-            /* 允許圖片區域進行手動縮放行為 */
             touch-action: manipulation; 
         }
         
-        /* 確保背景不會干擾縮放 */
-        #couponModal {
-            overflow: auto;
-        }
+        #couponModal { overflow: auto; }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-gray-900">
@@ -79,6 +75,57 @@
             </div>
         </div>
 
+        <div onclick="openModal('SUGI.jpg', 'SUGI 杉藥局')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">高品質藥妝店</span>
+                    <span class="text-gray-400 text-xs">2025/02/28</span>
+                </div>
+                <h2 class="text-xl font-bold">SUGI 杉藥局</h2>
+                <p class="text-green-600 font-bold mt-1">10% 免稅 + 最高 8% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="SUGI.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="openModal('COCO.jpg', 'CocokaraFine 可開嘉來')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded">知名藥妝連鎖</span>
+                    <span class="text-gray-400 text-xs">2026/03/31</span>
+                </div>
+                <h2 class="text-xl font-bold">CocokaraFine</h2>
+                <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="COCO.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示 QR碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="openModal('SATU.jpg', '札幌藥妝 (Satudora)')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">北海道必逛</span>
+                    <span class="text-gray-400 text-xs">長期有效</span>
+                </div>
+                <h2 class="text-xl font-bold">札幌藥妝 (Satudora)</h2>
+                <p class="text-blue-600 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="SATU.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
@@ -92,40 +139,6 @@
                     <button onclick="openDonki()" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition active:scale-95">
                         🎟️ 點我領取電子折價券
                     </button>
-                </div>
-            </div>
-        </div>
-
-        <div onclick="openModal('TSU.jpg', '鶴羽藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">店數最多</span>
-                    <span class="text-gray-400 text-xs">2027/12/31</span>
-                </div>
-                <h2 class="text-xl font-bold">鶴羽藥妝 (Tsuruha)</h2>
-                <p class="text-red-600 font-bold">10% 免稅 + 7% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="TSU.jpg" class="w-full h-40 object-cover rounded-lg border">
-                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
-                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊放大 QR碼</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div onclick="openModal('SUN.jpg', 'Sundrug 藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">知名藥妝</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold text-gray-800">Sundrug 尚都樂客</h2>
-                <p class="text-red-600 font-bold">10% 免稅 + 7% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="SUN.jpg" class="w-full h-40 object-cover rounded-lg border">
-                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
-                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊放大條碼</span>
-                    </div>
                 </div>
             </div>
         </div>
@@ -173,12 +186,11 @@
         function openModal(imgSrc, title) {
             const img = document.getElementById('fullImg');
             img.src = imgSrc;
-            img.style.transform = "scale(1)"; // 重設縮放狀態
+            img.style.transform = "scale(1)";
             isZoomed = false;
             
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('couponModal').classList.remove('hidden');
-            // 由於需要手動縮放，這裡改為不完全鎖定 body，但隱藏捲軸
             document.body.style.overflow = 'hidden';
         }
 
@@ -187,7 +199,6 @@
             document.body.style.overflow = 'auto';
         }
 
-        // 保留備用的點擊切換功能
         function toggleZoom() {
             const img = document.getElementById('fullImg');
             if (isZoomed) {
