@@ -66,42 +66,28 @@
             </div>
         </div>
 
-<div class="block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-    <div class="p-5">
-        <div class="flex justify-between items-start mb-2">
-            <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">24H 必逛</span>
-            <span class="text-gray-400 text-xs">官方系統</span>
+        <div class="block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">24H 必逛</span>
+                    <span class="text-gray-400 text-xs">官方系統</span>
+                </div>
+                <h2 class="text-xl font-bold text-gray-800">驚安殿堂 唐吉訶德</h2>
+                <p class="text-red-600 font-bold">10% 免稅 + 最高 7% 折扣</p>
+                
+                <div class="mt-4 p-4 bg-orange-50 rounded-xl border border-orange-200 text-center">
+                    <p class="text-sm text-orange-800 mb-3 font-medium">官方規定：需點擊下方連結領取方可生效</p>
+                    <button onclick="openDonki()" class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition active:scale-95">
+                        🎟️ 點我領取電子折價券
+                    </button>
+                </div>
+            </div>
+            <div class="bg-gray-50 p-3 text-center text-[10px] text-gray-400">
+                ※ 若條碼未出現，請點擊瀏覽器右上角選單選擇「在 Chrome/Safari 開啟」
+            </div>
         </div>
-        <h2 class="text-xl font-bold text-gray-800">驚安殿堂 唐吉訶德</h2>
-        <p class="text-red-600 font-bold">10% 免稅 + 最高 7% 折扣</p>
-        
-        <div class="mt-4 p-4 bg-orange-50 rounded-xl border border-orange-200 text-center">
-            <p class="text-sm text-orange-800 mb-3 font-medium">官方規定：需點擊下方連結領取方可生效</p>
-            <a href="https://japanportal.donki-global.com/coupon/cp001_zhtw.html" 
-               target="_blank" 
-               class="inline-block bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-full font-bold shadow-md transition active:scale-95">
-               🎟️ 點我領取電子折價券
-            </a>
-        </div>
-    </div>
-    <div class="bg-gray-50 p-3 text-center text-[10px] text-gray-400">
-        ※ 若條碼未出現，請點擊瀏覽器右上角選單選擇「在 Chrome/Safari 開啟」
-    </div>
-</div>
 
-<script>
-    // 在原本的 script 標籤內加入這個函數
-    function openDonki() {
-        // 使用 window.open 並將 opener 設為 null，徹底切斷來源追蹤
-        const newWindow = window.open('https://japanportal.donki-global.com/coupon/cp001_zhtw.html', '_blank', 'noopener,noreferrer');
-        if (newWindow) {
-            newWindow.opener = null;
-        }
-    }
-</script>
-
-
-       <div onclick="openModal('TSU.jpg', '鶴羽藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('TSU.jpg', '鶴羽藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
                     <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">店數最多</span>
@@ -121,7 +107,7 @@
             </div>
         </div>
 
-<div onclick="openModal('SUN.jpg', 'Sundrug 尚都樂客')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('SUN.jpg', 'Sundrug 尚都樂客')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
                     <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">知名藥妝</span>
@@ -141,23 +127,18 @@
             </div>
         </div>
 
-
-        <p class="text-center text-gray-400 text-xs">請確保結帳時手機網路通暢</p>
+        <p class="text-center text-gray-400 text-xs pb-10">請確保結帳時手機網路通暢</p>
     </div>
 
     <div id="couponModal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-center items-center p-4">
         <button onclick="closeModal()" class="absolute top-8 right-6 text-white text-4xl p-2">&times;</button>
-        
         <h3 id="modalTitle" class="text-white text-lg font-bold mb-4"></h3>
-
         <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6 shadow-lg">
             <p class="text-black text-sm font-extrabold text-center">店員様：スキャンをお願いします</p>
         </div>
-
         <div class="bg-white p-2 rounded-lg shadow-2xl flex justify-center items-center">
             <img id="fullImg" src="" alt="Coupon Big Image">
         </div>
-
         <div class="mt-8 text-center text-white">
             <p class="text-yellow-400 font-bold text-lg animate-pulse">☀️ 請將螢幕亮度調至最高</p>
             <button onclick="closeModal()" class="mt-6 bg-white/10 border border-white/20 text-white px-10 py-3 rounded-full font-bold">返回列表</button>
@@ -169,14 +150,17 @@
             document.getElementById('fullImg').src = imgSrc;
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('couponModal').classList.remove('hidden');
-            // 防止捲動
             document.body.style.overflow = 'hidden';
         }
 
         function closeModal() {
             document.getElementById('couponModal').classList.add('hidden');
-            // 恢復捲動
             document.body.style.overflow = 'auto';
+        }
+
+        function openDonki() {
+            // 使用 window.open 跳轉唐吉訶德官方頁面
+            window.open('https://japanportal.donki-global.com/coupon/cp001_zhtw.html', '_blank', 'noopener,noreferrer');
         }
     </script>
 </body>
