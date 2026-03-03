@@ -9,7 +9,6 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="日本優惠券">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#ffffff">
     
     <link rel="apple-touch-icon" href="icon.png">
     <link rel="icon" href="icon.png">
@@ -30,26 +29,20 @@
             touch-action: manipulation; 
         }
         
-        #couponModal { overflow: auto; }
         .scroll-mt { scroll-margin-top: 140px; }
-        
-        /* 隱藏捲軸 */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* 亮度提醒動畫 */
+        /* 亮度提醒閃爍動畫 */
         @keyframes brightness-hint {
             0% { background-color: rgba(0,0,0,0.95); }
             50% { background-color: rgba(255,255,255,0.2); }
             100% { background-color: rgba(0,0,0,0.95); }
         }
         .flash-bg { animation: brightness-hint 0.8s ease-in-out 1; }
-
-        /* 回到頂部按鈕 */
-        #toTop {
-            transition: opacity 0.3s, transform 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
+        
+        /* 回到頂部按鈕動畫 */
+        #toTop { transition: opacity 0.3s, transform 0.3s; }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-gray-900">
@@ -90,10 +83,7 @@
 
         <div onclick="openModal('MATS.jpg', '松本清 藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">藥妝店</span>
-                    <span class="text-gray-400 text-xs">2027/03/31</span>
-                </div>
+                <div class="flex justify-between items-start mb-2"><span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">藥妝店</span></div>
                 <h2 class="text-xl font-bold">松本清 (Matsumoto)</h2>
                 <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
                 <img src="MATS.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
@@ -102,25 +92,10 @@
 
         <div onclick="openModal('SUGI.jpg', 'SUGI 杉藥局')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">高品質藥妝</span>
-                    <span class="text-gray-400 text-xs">2027/02/28</span>
-                </div>
+                <div class="flex justify-between items-start mb-2"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">高品質藥妝</span></div>
                 <h2 class="text-xl font-bold">SUGI 杉藥局</h2>
                 <p class="text-green-600 font-bold mt-1">10% 免稅 + 最高 8% 折扣</p>
                 <img src="SUGI.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
-            </div>
-        </div>
-
-        <div onclick="openModal('COCO.jpg', 'CocokaraFine')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded">連鎖藥妝</span>
-                    <span class="text-gray-400 text-xs">2027/03/31</span>
-                </div>
-                <h2 class="text-xl font-bold">CocokaraFine</h2>
-                <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
-                <img src="COCO.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
@@ -130,25 +105,10 @@
 
         <div onclick="openModal('KINTETSU.jpg', '近鐵百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-gray-100 text-gray-700 text-xs font-bold px-2 py-1 rounded">關西百貨</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
+                <div class="flex justify-between items-start mb-2"><span class="bg-gray-100 text-gray-700 text-xs font-bold px-2 py-1 rounded">關西百貨</span></div>
                 <h2 class="text-xl font-bold">近鐵百貨 (Kintetsu)</h2>
                 <p class="text-indigo-600 font-bold mt-1">10% 免稅 + 5% 折扣</p>
                 <img src="KINTETSU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
-            </div>
-        </div>
-
-        <div onclick="openModal('DAIMARU.jpg', '大丸・松坂屋百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-1 rounded">連鎖百貨</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">大丸・松坂屋百貨</h2>
-                <p class="text-emerald-700 font-bold mt-1">10% 免稅 + 5% 折扣</p>
-                <img src="DAIMARU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
@@ -158,10 +118,7 @@
 
         <div onclick="openModal('FASOLA.jpg', 'Fa-So-La 成田機場')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">成田機場</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
+                <div class="flex justify-between items-start mb-2"><span class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">成田機場</span></div>
                 <h2 class="text-xl font-bold">Fa-So-La 免稅店</h2>
                 <p class="text-blue-600 font-bold mt-1">免稅 + 5% 折扣</p>
                 <img src="FASOLA.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
@@ -188,21 +145,22 @@
         <p class="text-center text-gray-400 text-[10px] pb-10 italic">結帳前請務必確保網路通暢</p>
     </div>
 
-    <div id="couponModal" class="fixed inset-0 z-50 hidden flex flex-col justify-center items-center p-4">
+    <div id="couponModal" class="fixed inset-0 z-50 hidden flex flex-col justify-center items-center p-4 bg-black/95">
         <button onclick="closeModal()" class="absolute top-10 right-6 text-white text-4xl">&times;</button>
+        
         <h3 id="modalTitle" class="text-white text-lg font-bold mb-4 text-center"></h3>
         
         <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6">
-            <p class="text-black text-sm font-extrabold">店員様：スキャンをお願いします</p>
+            <p class="text-black text-sm font-extrabold text-center">店員様：スキャンをお願いします</p>
         </div>
 
         <div class="bg-white p-2 rounded-lg shadow-2xl flex justify-center items-center">
-            <img id="fullImg" src="" onclick="toggleZoom()">
+            <img id="fullImg" src="" onclick="toggleZoom()" alt="優惠券條碼">
         </div>
 
         <div class="mt-8 text-center text-white">
-            <p id="brightnessText" class="text-yellow-400 font-bold text-lg animate-pulse">☀️ 請將螢幕亮度調至最高</p>
-            <p class="text-gray-400 text-xs mt-2">✨ 點擊圖片可放大 / 支援兩指縮放</p>
+            <p class="text-yellow-400 font-bold text-lg animate-pulse">☀️ 請將螢幕亮度調至最高</p>
+            <p class="text-gray-400 text-xs mt-2 font-medium">✨ 點擊圖片可切換放大 / 支援兩指縮放</p>
             <button onclick="closeModal()" class="mt-6 bg-white/10 border border-white/20 text-white px-10 py-3 rounded-full font-bold">返回列表</button>
         </div>
     </div>
@@ -212,15 +170,12 @@
     <script>
         let isZoomed = false;
 
-        // 開啟優惠券視窗
         function openModal(imgSrc, title) {
             const modal = document.getElementById('couponModal');
             const img = document.getElementById('fullImg');
-            
             img.src = imgSrc;
             img.style.transform = "scale(1)";
             isZoomed = false;
-            
             document.getElementById('modalTitle').innerText = title;
             modal.classList.remove('hidden');
             
@@ -246,7 +201,6 @@
             window.open('https://japanportal.donki-global.com/coupon/cp001_zhtw.html', '_blank');
         }
 
-        // 回到頂部邏輯
         window.onscroll = function() {
             const btn = document.getElementById('toTop');
             if (window.pageYOffset > 400) {
@@ -258,17 +212,15 @@
             }
         };
 
-        // 離線支援 (Service Worker) 註冊
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(() => {
-                    console.log('請手動部署 sw.js 以獲得完整離線支援');
-                });
+                navigator.serviceWorker.register('sw.js').catch(() => {});
             });
         }
     </script>
 </body>
 </html>
+
 
 
 
