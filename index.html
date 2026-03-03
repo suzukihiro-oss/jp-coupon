@@ -21,7 +21,7 @@
         .active-scale:active { transform: scale(0.98); transition: 0.1s; }
         img { -webkit-touch-callout: none; -webkit-user-select: none; }
         
-        /* 移除 transition，確保放大時不閃爍、不滑動 */
+        /* 徹底移除 transition 確保點擊放大時不閃爍、不滑動 */
         #fullImg { 
             max-width: 95%; 
             max-height: 70vh; 
@@ -56,6 +56,7 @@
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
                     <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">電器/手錶/藥妝</span>
+                    <span class="text-gray-400 text-xs">2026/08/31</span>
                 </div>
                 <h2 class="text-xl font-bold">Bic Camera</h2>
                 <p class="text-blue-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
@@ -69,14 +70,68 @@
         </div>
 
         <div id="drug-store" class="scroll-mt pt-2">
-            <p class="text-xs font-bold text-yellow-600 ml-2 mb-2 uppercase tracking-widest">Drugstores</p>
+            <p class="text-xs font-bold text-yellow-600 ml-2 mb-2 uppercase tracking-widest">Drugstores & Cosmetics</p>
         </div>
 
         <div onclick="openModal('MATS.jpg', '松本清 藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">連鎖藥妝店</span>
+                </div>
                 <h2 class="text-xl font-bold">松本清 (Matsumoto)</h2>
                 <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
                 <img src="MATS.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('SUGI.jpg', 'SUGI 杉藥局')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">高品質藥妝店</span>
+                </div>
+                <h2 class="text-xl font-bold">SUGI 杉藥局</h2>
+                <p class="text-green-600 font-bold mt-1">10% 免稅 + 最高 8% 折扣</p>
+                <img src="SUGI.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('COCO.jpg', 'CocokaraFine')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">CocokaraFine</h2>
+                <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
+                <img src="COCO.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('SATU.jpg', '札幌藥妝 (Satudora)')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">札幌藥妝 (Satudora)</h2>
+                <p class="text-blue-600 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <img src="SATU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('SUN.jpg', 'Sundrug 尚都樂客')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">Sundrug 尚都樂客</h2>
+                <p class="text-red-600 font-bold mt-1">10% 免稅 + 最高 7% 折扣</p>
+                <img src="SUN.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('TSU.jpg', '鶴羽藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">鶴羽藥妝 (Tsuruha)</h2>
+                <p class="text-red-600 font-bold mt-1">10% 免稅 + 最高 7% 折扣</p>
+                <img src="TSU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('EDION.jpg', 'EDION 愛電王')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">EDION 愛電王</h2>
+                <p class="text-blue-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
+                <img src="EDION.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
@@ -92,8 +147,32 @@
             </div>
         </div>
 
+        <div onclick="openModal('SEIBU.jpg', '西武百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">西武百貨 (Seibu)</h2>
+                <p class="text-blue-800 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <img src="SEIBU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('ODAKYU.jpg', '小田急百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">小田急百貨 (Odakyu)</h2>
+                <p class="text-sky-700 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <img src="ODAKYU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('DAIMARU.jpg', '大丸・松坂屋百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">大丸・松坂屋百貨</h2>
+                <p class="text-emerald-700 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <img src="DAIMARU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
         <div id="airport-store" class="scroll-mt pt-2">
-            <p class="text-xs font-bold text-blue-400 ml-2 mb-2 uppercase tracking-widest">Duty Free</p>
+            <p class="text-xs font-bold text-blue-400 ml-2 mb-2 uppercase tracking-widest">Airport Duty Free</p>
         </div>
 
         <div onclick="openModal('FASOLA.jpg', 'Fa-So-La 成田機場')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
@@ -104,15 +183,39 @@
             </div>
         </div>
 
+        <div onclick="openModal('ANA_NRT.jpg', 'ANA 成田機場 T1')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">ANA 成田 T1 免稅店</h2>
+                <p class="text-blue-800 font-bold mt-1">免稅 + 5% 折扣</p>
+                <img src="ANA_NRT.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
+        <div onclick="openModal('ANA_HND.jpg', 'ANA 羽田機場')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <h2 class="text-xl font-bold">ANA 羽田免稅店</h2>
+                <p class="text-blue-800 font-bold mt-1">免稅 + 5% 折扣</p>
+                <img src="ANA_HND.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
+            </div>
+        </div>
+
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="p-5 text-center">
-                <h2 class="text-xl font-bold">驚安殿堂 唐吉訶德</h2>
-                <button onclick="openDonki()" class="bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-md mt-2">
+                <h2 class="text-xl font-bold text-gray-800">驚安殿堂 唐吉訶德</h2>
+                <p class="text-red-600 font-bold mb-4">10% 免稅 + 最高 7% 折扣</p>
+                <button onclick="openDonki()" class="bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-md">
                     🎟️ 點我領取電子折價券
                 </button>
             </div>
         </div>
 
+        <div class="mt-10 p-6 bg-white rounded-3xl border-2 border-dashed border-gray-200">
+            <h3 class="text-lg font-bold text-center mb-4">💡 如何收藏到手機桌面？</h3>
+            <div class="grid grid-cols-2 gap-4 text-sm text-center">
+                <div class="border-r pr-2"><p class="font-bold text-blue-600">🍎 iPhone</p><p class="text-gray-500">分享 > 加入主畫面</p></div>
+                <div><p class="font-bold text-green-600">🤖 Android</p><p class="text-gray-500">三點 > 安裝/新增桌面</p></div>
+            </div>
+        </div>
         <p class="text-center text-gray-400 text-[10px] pb-10 italic">結帳前請務必確保網路通暢</p>
     </div>
 
@@ -120,12 +223,12 @@
         <button onclick="closeModal()" class="absolute top-10 right-6 text-white text-4xl">&times;</button>
         <h3 id="modalTitle" class="text-white text-lg font-bold mb-4 text-center"></h3>
         
-        <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6">
-            <p class="text-black text-sm font-extrabold text-center">店員様：スキャンをお願いします</p>
+        <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6 text-center font-extrabold text-black text-sm">
+            店員様：スキャンをお願いします
         </div>
 
         <div class="bg-white p-2 rounded-lg shadow-2xl">
-            <img id="fullImg" src="" onclick="toggleZoom()" alt="優惠券條碼">
+            <img id="fullImg" src="" onclick="toggleZoom()" alt="Coupon">
         </div>
 
         <div class="mt-8 text-center text-white">
@@ -135,7 +238,7 @@
         </div>
     </div>
 
-    <button id="toTop" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-white/90 backdrop-blur shadow-xl border w-12 h-12 rounded-full text-xl z-30 opacity-0 pointer-events-none">⬆️</button>
+    <button id="toTop" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-white/90 backdrop-blur shadow-xl border w-12 h-12 rounded-full text-xl z-30 opacity-0 pointer-events-none transition-all duration-300">⬆️</button>
 
     <script>
         let isZoomed = false;
@@ -144,7 +247,7 @@
             const modal = document.getElementById('couponModal');
             const img = document.getElementById('fullImg');
             img.src = imgSrc;
-            img.style.transform = "scale(1)"; // 重置大小
+            img.style.transform = "scale(1)"; 
             isZoomed = false;
             document.getElementById('modalTitle').innerText = title;
             modal.classList.remove('hidden');
@@ -158,7 +261,6 @@
 
         function toggleZoom() {
             const img = document.getElementById('fullImg');
-            // 直接切換，不使用動畫
             isZoomed = !isZoomed;
             img.style.transform = isZoomed ? "scale(1.5)" : "scale(1)";
         }
@@ -186,6 +288,7 @@
     </script>
 </body>
 </html>
+
 
 
 
