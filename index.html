@@ -2,17 +2,17 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>日本旅遊優惠券助手</title>
 
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="日本優惠券">
     <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#ffffff">
     
     <link rel="apple-touch-icon" href="icon.png">
-    <link rel="icon" sizes="192x192" href="icon.png">
-    <link rel="icon" sizes="512x512" href="icon.png">
+    <link rel="icon" href="icon.png">
     <link rel="manifest" href="manifest.json">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -24,20 +24,32 @@
         
         #fullImg { 
             max-width: 95%; 
-            max-height: 75vh; 
+            max-height: 70vh; 
             object-fit: contain; 
             transition: transform 0.2s ease-in-out;
             touch-action: manipulation; 
         }
         
         #couponModal { overflow: auto; }
-        
-        /* 讓捲動時不要被標題擋住，因導航欄變高，增加邊距 */
         .scroll-mt { scroll-margin-top: 140px; }
         
-        /* 隱藏捲軸但保留功能 (針對快捷列) */
+        /* 隱藏捲軸 */
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* 亮度提醒動畫 */
+        @keyframes brightness-hint {
+            0% { background-color: rgba(0,0,0,0.95); }
+            50% { background-color: rgba(255,255,255,0.2); }
+            100% { background-color: rgba(0,0,0,0.95); }
+        }
+        .flash-bg { animation: brightness-hint 0.8s ease-in-out 1; }
+
+        /* 回到頂部按鈕 */
+        #toTop {
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-gray-900">
@@ -65,7 +77,7 @@
                 <p class="text-blue-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
                 <div class="mt-4 relative">
                     <img src="BIC.jpg" class="w-full h-40 object-cover rounded-lg">
-                    <div class="absolute inset-0 bg-black/20 flex items-center justify-center rounded-lg">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
                         <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊掃碼</span>
                     </div>
                 </div>
@@ -73,104 +85,42 @@
         </div>
 
         <div id="drug-store" class="scroll-mt pt-2">
-            <p class="text-xs font-bold text-yellow-600 ml-2 mb-2 uppercase tracking-widest">Drugstores & Cosmetics</p>
+            <p class="text-xs font-bold text-yellow-600 ml-2 mb-2 uppercase tracking-widest">Drugstores</p>
         </div>
 
         <div onclick="openModal('MATS.jpg', '松本清 藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
-                    <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">連鎖藥妝店</span>
+                    <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">藥妝店</span>
                     <span class="text-gray-400 text-xs">2027/03/31</span>
                 </div>
                 <h2 class="text-xl font-bold">松本清 (Matsumoto)</h2>
                 <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="MATS.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
+                <img src="MATS.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
         <div onclick="openModal('SUGI.jpg', 'SUGI 杉藥局')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">高品質藥妝店</span>
+                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">高品質藥妝</span>
                     <span class="text-gray-400 text-xs">2027/02/28</span>
                 </div>
                 <h2 class="text-xl font-bold">SUGI 杉藥局</h2>
                 <p class="text-green-600 font-bold mt-1">10% 免稅 + 最高 8% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="SUGI.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
+                <img src="SUGI.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
-        <div onclick="openModal('COCO.jpg', 'CocokaraFine 可開嘉來')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('COCO.jpg', 'CocokaraFine')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
-                    <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded">知名藥妝連鎖</span>
+                    <span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded">連鎖藥妝</span>
                     <span class="text-gray-400 text-xs">2027/03/31</span>
                 </div>
                 <h2 class="text-xl font-bold">CocokaraFine</h2>
                 <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="COCO.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
-            </div>
-        </div>
-
-        <div onclick="openModal('SATU.jpg', '札幌藥妝 (Satudora)')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">北海道必逛</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">札幌藥妝 (Satudora)</h2>
-                <p class="text-blue-600 font-bold mt-1">10% 免稅 + 5% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="SATU.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
-            </div>
-        </div>
-
-        <div onclick="openModal('SUN.jpg', 'Sundrug 尚都樂客')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">知名藥妝</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">Sundrug 尚都樂客</h2>
-                <p class="text-red-600 font-bold mt-1">10% 免稅 + 最高 7% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="SUN.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
-            </div>
-        </div>
-
-        <div onclick="openModal('TSU.jpg', '鶴羽藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">店數最多</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">鶴羽藥妝 (Tsuruha)</h2>
-                <p class="text-red-600 font-bold mt-1">10% 免稅 + 最高 7% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="TSU.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
-            </div>
-        </div>
-
-        <div onclick="openModal('EDION.jpg', 'EDION 愛電王')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">大型電器</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">EDION 愛電王</h2>
-                <p class="text-blue-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="EDION.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
+                <img src="COCO.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
@@ -186,37 +136,7 @@
                 </div>
                 <h2 class="text-xl font-bold">近鐵百貨 (Kintetsu)</h2>
                 <p class="text-indigo-600 font-bold mt-1">10% 免稅 + 5% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="KINTETSU.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
-            </div>
-        </div>
-
-        <div onclick="openModal('SEIBU.jpg', '西武百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">精選百貨</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">西武百貨 (Seibu)</h2>
-                <p class="text-blue-800 font-bold mt-1">10% 免稅 + 5% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="SEIBU.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
-            </div>
-        </div>
-
-        <div onclick="openModal('ODAKYU.jpg', '小田急百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-sky-100 text-sky-700 text-xs font-bold px-2 py-1 rounded">東京購物</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">小田急百貨 (Odakyu)</h2>
-                <p class="text-sky-700 font-bold mt-1">10% 免稅 + 5% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="ODAKYU.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
+                <img src="KINTETSU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
@@ -228,17 +148,15 @@
                 </div>
                 <h2 class="text-xl font-bold">大丸・松坂屋百貨</h2>
                 <p class="text-emerald-700 font-bold mt-1">10% 免稅 + 5% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="DAIMARU.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
+                <img src="DAIMARU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
         <div id="airport-store" class="scroll-mt pt-2">
-            <p class="text-xs font-bold text-blue-400 ml-2 mb-2 uppercase tracking-widest">Airport Duty Free</p>
+            <p class="text-xs font-bold text-blue-400 ml-2 mb-2 uppercase tracking-widest">Duty Free</p>
         </div>
 
-        <div onclick="openModal('FASOLA.jpg', 'Fa-So-La 成田機場免稅店')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('FASOLA.jpg', 'Fa-So-La 成田機場')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
                     <span class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">成田機場</span>
@@ -246,106 +164,112 @@
                 </div>
                 <h2 class="text-xl font-bold">Fa-So-La 免稅店</h2>
                 <p class="text-blue-600 font-bold mt-1">免稅 + 5% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="FASOLA.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
+                <img src="FASOLA.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
-        <div onclick="openModal('ANA_NRT.jpg', 'ANA 成田機場免稅店 (T1)')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-blue-700 text-white text-xs font-bold px-2 py-1 rounded">成田 T1</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">ANA 成田機場 T1 免稅店</h2>
-                <p class="text-blue-800 font-bold mt-1">免稅 + 5% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="ANA_NRT.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <div class="p-5 text-center">
+                <h2 class="text-xl font-bold">驚安殿堂 唐吉訶德</h2>
+                <p class="text-red-600 font-bold mb-4">10% 免稅 + 最高 7% 折扣</p>
+                <button onclick="openDonki()" class="bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-md active:scale-95 transition">
+                    🎟️ 點我領取電子折價券
+                </button>
             </div>
         </div>
 
-        <div onclick="openModal('ANA_HND.jpg', 'ANA 羽田機場免稅店 (T2/T3)')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-blue-700 text-white text-xs font-bold px-2 py-1 rounded">羽田免稅</span>
-                    <span class="text-gray-400 text-xs">長期有效</span>
-                </div>
-                <h2 class="text-xl font-bold">ANA 羽田機場 免稅店</h2>
-                <p class="text-blue-800 font-bold mt-1">免稅 + 5% 折扣</p>
-                <div class="mt-4 relative">
-                    <img src="ANA_HND.jpg" class="w-full h-40 object-cover rounded-lg border">
-                </div>
+        <div class="p-6 bg-white rounded-3xl border-2 border-dashed border-gray-200">
+            <h3 class="text-lg font-bold text-center mb-4">💡 如何收藏到桌面？</h3>
+            <div class="grid grid-cols-2 gap-4 text-sm text-center">
+                <div class="border-r pr-2"><p class="font-bold text-blue-600">🍎 iPhone</p><p class="text-gray-500">分享 > 加入主畫面</p></div>
+                <div><p class="font-bold text-green-600">🤖 Android</p><p class="text-gray-500">三點 > 安裝/新增桌面</p></div>
             </div>
         </div>
-
-        <div class="block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-orange-100 text-orange-600 text-xs font-bold px-2 py-1 rounded">24H 必逛</span>
-                    <span class="text-gray-400 text-xs">官方系統</span>
-                </div>
-                <h2 class="text-xl font-bold text-gray-800">驚安殿堂 唐吉訶德</h2>
-                <p class="text-red-600 font-bold">10% 免稅 + 最高 7% 折扣</p>
-                <div class="mt-4 p-4 bg-orange-50 rounded-xl border border-orange-200 text-center">
-                    <button onclick="openDonki()" class="bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-md">
-                        🎟️ 點我領取電子折價券
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-10 p-6 bg-white rounded-3xl border-2 border-dashed border-gray-200">
-            <h3 class="text-lg font-bold text-center mb-4">💡 如何收藏到手機桌面？</h3>
-            <div class="grid grid-cols-2 gap-4 text-sm">
-                <div class="space-y-2 border-r pr-2 text-center">
-                    <p class="font-bold text-blue-600">🍎 iPhone</p>
-                    <p class="text-gray-600">點擊下方「分享」<br>選「加入主畫面」</p>
-                </div>
-                <div class="space-y-2 text-center">
-                    <p class="font-bold text-green-600">🤖 Android</p>
-                    <p class="text-gray-600">點擊右上「三點」<br>選「安裝/新增桌面」</p>
-                </div>
-            </div>
-        </div>
-
-        <p class="text-center text-gray-400 text-xs pb-10">請確保結帳時手機網路通暢</p>
+        <p class="text-center text-gray-400 text-[10px] pb-10 italic">結帳前請務必確保網路通暢</p>
     </div>
 
-    <div id="couponModal" class="fixed inset-0 bg-black/95 z-50 hidden flex flex-col justify-center items-center p-4">
-        <button onclick="closeModal()" class="absolute top-8 right-6 text-white text-4xl">&times;</button>
-        <h3 id="modalTitle" class="text-white text-lg font-bold mb-4"></h3>
-        <div class="bg-white p-2 rounded-lg"><img id="fullImg" src="" onclick="toggleZoom()"></div>
-        <button onclick="closeModal()" class="mt-10 bg-white/10 text-white px-10 py-3 rounded-full font-bold">返回列表</button>
+    <div id="couponModal" class="fixed inset-0 z-50 hidden flex flex-col justify-center items-center p-4">
+        <button onclick="closeModal()" class="absolute top-10 right-6 text-white text-4xl">&times;</button>
+        <h3 id="modalTitle" class="text-white text-lg font-bold mb-4 text-center"></h3>
+        
+        <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6">
+            <p class="text-black text-sm font-extrabold">店員様：スキャンをお願いします</p>
+        </div>
+
+        <div class="bg-white p-2 rounded-lg shadow-2xl flex justify-center items-center">
+            <img id="fullImg" src="" onclick="toggleZoom()">
+        </div>
+
+        <div class="mt-8 text-center text-white">
+            <p id="brightnessText" class="text-yellow-400 font-bold text-lg animate-pulse">☀️ 請將螢幕亮度調至最高</p>
+            <p class="text-gray-400 text-xs mt-2">✨ 點擊圖片可放大 / 支援兩指縮放</p>
+            <button onclick="closeModal()" class="mt-6 bg-white/10 border border-white/20 text-white px-10 py-3 rounded-full font-bold">返回列表</button>
+        </div>
     </div>
+
+    <button id="toTop" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-white/90 backdrop-blur shadow-xl border w-12 h-12 rounded-full text-xl z-30 opacity-0 pointer-events-none transition-all duration-300">⬆️</button>
 
     <script>
         let isZoomed = false;
+
+        // 開啟優惠券視窗
         function openModal(imgSrc, title) {
+            const modal = document.getElementById('couponModal');
             const img = document.getElementById('fullImg');
+            
             img.src = imgSrc;
             img.style.transform = "scale(1)";
             isZoomed = false;
+            
             document.getElementById('modalTitle').innerText = title;
-            document.getElementById('couponModal').classList.remove('hidden');
+            modal.classList.remove('hidden');
+            
+            // 閃爍背景提醒亮度
+            modal.classList.add('flash-bg');
+            setTimeout(() => modal.classList.remove('flash-bg'), 1000);
+            
             document.body.style.overflow = 'hidden';
         }
+
         function closeModal() {
             document.getElementById('couponModal').classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+
         function toggleZoom() {
             const img = document.getElementById('fullImg');
             img.style.transform = isZoomed ? "scale(1)" : "scale(1.5)";
             isZoomed = !isZoomed;
         }
+
         function openDonki() {
             window.open('https://japanportal.donki-global.com/coupon/cp001_zhtw.html', '_blank');
+        }
+
+        // 回到頂部邏輯
+        window.onscroll = function() {
+            const btn = document.getElementById('toTop');
+            if (window.pageYOffset > 400) {
+                btn.classList.add('opacity-100');
+                btn.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                btn.classList.remove('opacity-100');
+                btn.classList.add('opacity-0', 'pointer-events-none');
+            }
+        };
+
+        // 離線支援 (Service Worker) 註冊
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => {
+                    console.log('請手動部署 sw.js 以獲得完整離線支援');
+                });
+            });
         }
     </script>
 </body>
 </html>
+
 
 
 
