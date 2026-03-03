@@ -21,11 +21,12 @@
         .active-scale:active { transform: scale(0.98); transition: 0.1s; }
         img { -webkit-touch-callout: none; -webkit-user-select: none; }
         
+        /* 移除 transition，確保放大時不閃爍、不滑動 */
         #fullImg { 
             max-width: 95%; 
             max-height: 70vh; 
             object-fit: contain; 
-            transition: transform 0.2s ease-in-out;
+            transform: scale(1);
             touch-action: manipulation; 
         }
         
@@ -33,7 +34,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* 回到頂部按鈕動畫 */
         #toTop { transition: opacity 0.3s, transform 0.3s; }
     </style>
 </head>
@@ -56,7 +56,6 @@
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
                     <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded">電器/手錶/藥妝</span>
-                    <span class="text-gray-400 text-xs">2026/08/31</span>
                 </div>
                 <h2 class="text-xl font-bold">Bic Camera</h2>
                 <p class="text-blue-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
@@ -75,19 +74,9 @@
 
         <div onclick="openModal('MATS.jpg', '松本清 藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2"><span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">藥妝店</span></div>
                 <h2 class="text-xl font-bold">松本清 (Matsumoto)</h2>
                 <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
                 <img src="MATS.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
-            </div>
-        </div>
-
-        <div onclick="openModal('SUGI.jpg', 'SUGI 杉藥局')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
-            <div class="p-5">
-                <div class="flex justify-between items-start mb-2"><span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">高品質藥妝</span></div>
-                <h2 class="text-xl font-bold">SUGI 杉藥局</h2>
-                <p class="text-green-600 font-bold mt-1">10% 免稅 + 最高 8% 折扣</p>
-                <img src="SUGI.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
             </div>
         </div>
 
@@ -97,7 +86,6 @@
 
         <div onclick="openModal('KINTETSU.jpg', '近鐵百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2"><span class="bg-gray-100 text-gray-700 text-xs font-bold px-2 py-1 rounded">關西百貨</span></div>
                 <h2 class="text-xl font-bold">近鐵百貨 (Kintetsu)</h2>
                 <p class="text-indigo-600 font-bold mt-1">10% 免稅 + 5% 折扣</p>
                 <img src="KINTETSU.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
@@ -110,7 +98,6 @@
 
         <div onclick="openModal('FASOLA.jpg', 'Fa-So-La 成田機場')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2"><span class="bg-blue-500 text-white text-xs font-bold px-2 py-1 rounded">成田機場</span></div>
                 <h2 class="text-xl font-bold">Fa-So-La 免稅店</h2>
                 <p class="text-blue-600 font-bold mt-1">免稅 + 5% 折扣</p>
                 <img src="FASOLA.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
@@ -120,44 +107,35 @@
         <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="p-5 text-center">
                 <h2 class="text-xl font-bold">驚安殿堂 唐吉訶德</h2>
-                <p class="text-red-600 font-bold mb-4">10% 免稅 + 最高 7% 折扣</p>
-                <button onclick="openDonki()" class="bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-md active:scale-95 transition">
+                <button onclick="openDonki()" class="bg-orange-500 text-white px-8 py-3 rounded-full font-bold shadow-md mt-2">
                     🎟️ 點我領取電子折價券
                 </button>
             </div>
         </div>
 
-        <div class="p-6 bg-white rounded-3xl border-2 border-dashed border-gray-200">
-            <h3 class="text-lg font-bold text-center mb-4">💡 如何收藏到桌面？</h3>
-            <div class="grid grid-cols-2 gap-4 text-sm text-center">
-                <div class="border-r pr-2"><p class="font-bold text-blue-600">🍎 iPhone</p><p class="text-gray-500">分享 > 加入主畫面</p></div>
-                <div><p class="font-bold text-green-600">🤖 Android</p><p class="text-gray-500">三點 > 安裝/新增桌面</p></div>
-            </div>
-        </div>
         <p class="text-center text-gray-400 text-[10px] pb-10 italic">結帳前請務必確保網路通暢</p>
     </div>
 
     <div id="couponModal" class="fixed inset-0 z-50 hidden flex flex-col justify-center items-center p-4 bg-black/95">
         <button onclick="closeModal()" class="absolute top-10 right-6 text-white text-4xl">&times;</button>
-        
         <h3 id="modalTitle" class="text-white text-lg font-bold mb-4 text-center"></h3>
         
         <div class="bg-yellow-400 px-6 py-2 rounded-full mb-6">
             <p class="text-black text-sm font-extrabold text-center">店員様：スキャンをお願いします</p>
         </div>
 
-        <div class="bg-white p-2 rounded-lg shadow-2xl flex justify-center items-center">
+        <div class="bg-white p-2 rounded-lg shadow-2xl">
             <img id="fullImg" src="" onclick="toggleZoom()" alt="優惠券條碼">
         </div>
 
         <div class="mt-8 text-center text-white">
-            <p class="text-yellow-400 font-bold text-lg animate-pulse">☀️ 請將螢幕亮度調至最高</p>
+            <p class="text-yellow-400 font-bold text-lg">☀️ 請將螢幕亮度調至最高</p>
             <p class="text-gray-400 text-xs mt-2 font-medium">✨ 點擊圖片可放大 / 支援兩指縮放</p>
             <button onclick="closeModal()" class="mt-6 bg-white/10 border border-white/20 text-white px-10 py-3 rounded-full font-bold">返回列表</button>
         </div>
     </div>
 
-    <button id="toTop" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-white/90 backdrop-blur shadow-xl border w-12 h-12 rounded-full text-xl z-30 opacity-0 pointer-events-none transition-all duration-300">⬆️</button>
+    <button id="toTop" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-white/90 backdrop-blur shadow-xl border w-12 h-12 rounded-full text-xl z-30 opacity-0 pointer-events-none">⬆️</button>
 
     <script>
         let isZoomed = false;
@@ -166,7 +144,7 @@
             const modal = document.getElementById('couponModal');
             const img = document.getElementById('fullImg');
             img.src = imgSrc;
-            img.style.transform = "scale(1)";
+            img.style.transform = "scale(1)"; // 重置大小
             isZoomed = false;
             document.getElementById('modalTitle').innerText = title;
             modal.classList.remove('hidden');
@@ -180,8 +158,9 @@
 
         function toggleZoom() {
             const img = document.getElementById('fullImg');
-            img.style.transform = isZoomed ? "scale(1)" : "scale(1.5)";
+            // 直接切換，不使用動畫
             isZoomed = !isZoomed;
+            img.style.transform = isZoomed ? "scale(1.5)" : "scale(1)";
         }
 
         function openDonki() {
@@ -207,6 +186,7 @@
     </script>
 </body>
 </html>
+
 
 
 
