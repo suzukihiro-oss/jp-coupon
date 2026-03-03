@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>日本旅遊優惠券助手</title>
-
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="日本優惠券">
-    <meta name="mobile-web-app-capable" content="yes">
-    
-    <link rel="apple-touch-icon" href="icon.png">
-    <link rel="icon" href="icon.png">
-    <link rel="manifest" href="manifest.json">
+    <title>2026 日本旅遊優惠券助手</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -21,7 +12,7 @@
         .active-scale:active { transform: scale(0.98); transition: 0.1s; }
         img { -webkit-touch-callout: none; -webkit-user-select: none; }
         
-        /* 徹底移除 transition 確保點擊放大時不閃爍、不滑動 */
+        /* 瞬間放大，無閃爍，無動畫 */
         #fullImg { 
             max-width: 95%; 
             max-height: 70vh; 
@@ -34,7 +25,7 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        #toTop { transition: opacity 0.3s, transform 0.3s; }
+        #toTop { transition: opacity 0.3s; }
     </style>
 </head>
 <body class="bg-slate-50 font-sans text-gray-900">
@@ -70,14 +61,11 @@
         </div>
 
         <div id="drug-store" class="scroll-mt pt-2">
-            <p class="text-xs font-bold text-yellow-600 ml-2 mb-2 uppercase tracking-widest">Drugstores & Cosmetics</p>
+            <p class="text-xs font-bold text-yellow-600 ml-2 mb-2 uppercase tracking-widest">Drugstores</p>
         </div>
 
         <div onclick="openModal('MATS.jpg', '松本清 藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-yellow-100 text-yellow-700 text-xs font-bold px-2 py-1 rounded">連鎖藥妝店</span>
-                </div>
                 <h2 class="text-xl font-bold">松本清 (Matsumoto)</h2>
                 <p class="text-red-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
                 <img src="MATS.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
@@ -86,9 +74,6 @@
 
         <div onclick="openModal('SUGI.jpg', 'SUGI 杉藥局')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-2 py-1 rounded">高品質藥妝店</span>
-                </div>
                 <h2 class="text-xl font-bold">SUGI 杉藥局</h2>
                 <p class="text-green-600 font-bold mt-1">10% 免稅 + 最高 8% 折扣</p>
                 <img src="SUGI.jpg" class="w-full h-40 object-cover rounded-lg mt-4 border">
@@ -103,7 +88,7 @@
             </div>
         </div>
 
-        <div onclick="openModal('SATU.jpg', '札幌藥妝 (Satudora)')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('SATU.jpg', '札幌藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <h2 class="text-xl font-bold">札幌藥妝 (Satudora)</h2>
                 <p class="text-blue-600 font-bold mt-1">10% 免稅 + 5% 折扣</p>
@@ -111,7 +96,7 @@
             </div>
         </div>
 
-        <div onclick="openModal('SUN.jpg', 'Sundrug 尚都樂客')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('SUN.jpg', 'Sundrug')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <h2 class="text-xl font-bold">Sundrug 尚都樂客</h2>
                 <p class="text-red-600 font-bold mt-1">10% 免稅 + 最高 7% 折扣</p>
@@ -175,7 +160,7 @@
             <p class="text-xs font-bold text-blue-400 ml-2 mb-2 uppercase tracking-widest">Airport Duty Free</p>
         </div>
 
-        <div onclick="openModal('FASOLA.jpg', 'Fa-So-La 成田機場')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('FASOLA.jpg', 'Fa-So-La')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <h2 class="text-xl font-bold">Fa-So-La 免稅店</h2>
                 <p class="text-blue-600 font-bold mt-1">免稅 + 5% 折扣</p>
@@ -183,7 +168,7 @@
             </div>
         </div>
 
-        <div onclick="openModal('ANA_NRT.jpg', 'ANA 成田機場 T1')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+        <div onclick="openModal('ANA_NRT.jpg', 'ANA 成田機場')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
             <div class="p-5">
                 <h2 class="text-xl font-bold">ANA 成田 T1 免稅店</h2>
                 <p class="text-blue-800 font-bold mt-1">免稅 + 5% 折扣</p>
@@ -209,13 +194,6 @@
             </div>
         </div>
 
-        <div class="mt-10 p-6 bg-white rounded-3xl border-2 border-dashed border-gray-200">
-            <h3 class="text-lg font-bold text-center mb-4">💡 如何收藏到手機桌面？</h3>
-            <div class="grid grid-cols-2 gap-4 text-sm text-center">
-                <div class="border-r pr-2"><p class="font-bold text-blue-600">🍎 iPhone</p><p class="text-gray-500">分享 > 加入主畫面</p></div>
-                <div><p class="font-bold text-green-600">🤖 Android</p><p class="text-gray-500">三點 > 安裝/新增桌面</p></div>
-            </div>
-        </div>
         <p class="text-center text-gray-400 text-[10px] pb-10 italic">結帳前請務必確保網路通暢</p>
     </div>
 
@@ -238,7 +216,7 @@
         </div>
     </div>
 
-    <button id="toTop" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-white/90 backdrop-blur shadow-xl border w-12 h-12 rounded-full text-xl z-30 opacity-0 pointer-events-none transition-all duration-300">⬆️</button>
+    <button id="toTop" onclick="window.scrollTo(0,0)" class="fixed bottom-6 right-6 bg-white/90 backdrop-blur shadow-xl border w-12 h-12 rounded-full text-xl z-30 opacity-0 pointer-events-none">⬆️</button>
 
     <script>
         let isZoomed = false;
@@ -279,15 +257,10 @@
                 btn.classList.add('opacity-0', 'pointer-events-none');
             }
         };
-
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(() => {});
-            });
-        }
     </script>
 </body>
 </html>
+
 
 
 
