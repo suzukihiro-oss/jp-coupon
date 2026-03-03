@@ -21,7 +21,6 @@
         .active-scale:active { transform: scale(0.98); transition: 0.1s; }
         img { -webkit-touch-callout: none; -webkit-user-select: none; }
         
-        /* 彈出視窗圖片設定 */
         #fullImg { 
             max-width: 95%; 
             max-height: 75vh; 
@@ -126,6 +125,125 @@
             </div>
         </div>
 
+        <div onclick="openModal('SUN.jpg', 'Sundrug 尚都樂客')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">知名藥妝</span>
+                    <span class="text-gray-400 text-xs">長期有效</span>
+                </div>
+                <h2 class="text-xl font-bold">Sundrug 尚都樂客</h2>
+                <p class="text-red-600 font-bold mt-1">10% 免稅 + 最高 7% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="SUN.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="openModal('TSU.jpg', '鶴羽藥妝')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">店數最多</span>
+                    <span class="text-gray-400 text-xs">長期有效</span>
+                </div>
+                <h2 class="text-xl font-bold">鶴羽藥妝 (Tsuruha)</h2>
+                <p class="text-red-600 font-bold mt-1">10% 免稅 + 最高 7% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="TSU.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="openModal('EDION.jpg', 'EDION 愛電王')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded">大型電器</span>
+                    <span class="text-gray-400 text-xs">長期有效</span>
+                </div>
+                <h2 class="text-xl font-bold">EDION 愛電王</h2>
+                <p class="text-blue-600 font-bold mt-1">10% 免稅 + 7% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="EDION.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="openModal('KINTETSU.jpg', '近鐵百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-gray-100 text-gray-700 text-xs font-bold px-2 py-1 rounded">關西百貨</span>
+                    <span class="text-gray-400 text-xs">長期有效</span>
+                </div>
+                <h2 class="text-xl font-bold">近鐵百貨 (Kintetsu)</h2>
+                <p class="text-indigo-600 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="KINTETSU.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="openModal('SEIBU.jpg', '西武百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2 py-1 rounded">精選百貨</span>
+                    <span class="text-gray-400 text-xs">長期有效</span>
+                </div>
+                <h2 class="text-xl font-bold">西武百貨 (Seibu)</h2>
+                <p class="text-blue-800 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="SEIBU.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="openModal('ODAKYU.jpg', '小田急百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-sky-100 text-sky-700 text-xs font-bold px-2 py-1 rounded">東京購物</span>
+                    <span class="text-gray-400 text-xs">長期有效</span>
+                </div>
+                <h2 class="text-xl font-bold">小田急百貨 (Odakyu)</h2>
+                <p class="text-sky-700 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="ODAKYU.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div onclick="openModal('DAIMARU.jpg', '大丸・松坂屋百貨')" class="active-scale bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden cursor-pointer">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-2">
+                    <span class="bg-emerald-100 text-emerald-700 text-xs font-bold px-2 py-1 rounded">連鎖百貨</span>
+                    <span class="text-gray-400 text-xs">長期有效</span>
+                </div>
+                <h2 class="text-xl font-bold">大丸・松坂屋百貨</h2>
+                <p class="text-emerald-700 font-bold mt-1">10% 免稅 + 5% 折扣</p>
+                <div class="mt-4 relative">
+                    <img src="DAIMARU.jpg" class="w-full h-40 object-cover rounded-lg border">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded-lg">
+                        <span class="bg-white/90 text-black px-4 py-2 rounded-full text-sm font-bold shadow-lg">點擊顯示條碼</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <div class="p-5">
                 <div class="flex justify-between items-start mb-2">
@@ -214,5 +332,7 @@
         }
     </script>
 </body>
+</html>
 
 </html>
+
