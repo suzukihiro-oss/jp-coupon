@@ -33,14 +33,6 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* 亮度提醒閃爍動畫 */
-        @keyframes brightness-hint {
-            0% { background-color: rgba(0,0,0,0.95); }
-            50% { background-color: rgba(255,255,255,0.2); }
-            100% { background-color: rgba(0,0,0,0.95); }
-        }
-        .flash-bg { animation: brightness-hint 0.8s ease-in-out 1; }
-        
         /* 回到頂部按鈕動畫 */
         #toTop { transition: opacity 0.3s, transform 0.3s; }
     </style>
@@ -160,7 +152,7 @@
 
         <div class="mt-8 text-center text-white">
             <p class="text-yellow-400 font-bold text-lg animate-pulse">☀️ 請將螢幕亮度調至最高</p>
-            <p class="text-gray-400 text-xs mt-2 font-medium">✨ 點擊圖片可切換放大 / 支援兩指縮放</p>
+            <p class="text-gray-400 text-xs mt-2 font-medium">✨ 點擊圖片可放大 / 支援兩指縮放</p>
             <button onclick="closeModal()" class="mt-6 bg-white/10 border border-white/20 text-white px-10 py-3 rounded-full font-bold">返回列表</button>
         </div>
     </div>
@@ -178,11 +170,6 @@
             isZoomed = false;
             document.getElementById('modalTitle').innerText = title;
             modal.classList.remove('hidden');
-            
-            // 閃爍背景提醒亮度
-            modal.classList.add('flash-bg');
-            setTimeout(() => modal.classList.remove('flash-bg'), 1000);
-            
             document.body.style.overflow = 'hidden';
         }
 
@@ -220,6 +207,7 @@
     </script>
 </body>
 </html>
+
 
 
 
